@@ -1,0 +1,44 @@
+{
+  "name": "web-storage",
+  "version": "0.5.0",
+  "description": "A simple, JavaScript API for handling localStorage/sessionStorage with automatic JSON serialization",
+  "keywords": [
+    "webStorage",
+    "web-storage",
+    "localStorage",
+    "sessionStorage",
+    "json",
+    "serialization",
+    "serialize",
+    "stringify"
+  ],
+  "author": "Mark Lin <marklin1106@gmail.com>",
+  "license": "MIT",
+  "main": "lib/webStorage.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:seawind543/web-storage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/seawind543/web-storage/issues"
+  },
+  "homepage": "https://github.com/seawind543/web-storage",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "clean": "rm -f {lib}/*",
+    "prepublish": "npm run lint && npm run clean && npm run build",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-eslint": "8.2.3",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-es2015": "6.24.1",
+    "babel-register": "6.26.0",
+    "eslint": "4.19.1",
+    "eslint-plugin-import": "2.12.0",
+    "eslint-config-airbnb-base": "13.0.0"
+  }
+}

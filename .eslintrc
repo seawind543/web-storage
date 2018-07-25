@@ -1,0 +1,16 @@
+{
+    "extends": "eslint-config-airbnb-base",
+    "parserOptions": {
+        "ecmaVersion": 2017,
+        "sourceType": 'module'
+    },
+    "env": {
+        "browser": true,
+        "mocha": true
+    },
+    "rules": {
+        "comma-dangle": 0,
+        "indent": ["error", 4],
+        "no-shadow": 0
+    }
+}
