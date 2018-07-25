@@ -23,18 +23,18 @@ const storage = webStorage(options);
  * Required: false
  * Default: 'default'
  * Description: The namespace for set/get item into/from target storage.
- */ 
+ */
 
 /**
  * @ options.sessionStorage
  * Type: bool
  * Required: false
  * Default: false
- * Description: Apply the target storage (One of [window.localStorage, window.sessionStorage]) for set/get item. 
+ * Description: Apply the target storage (One of [window.localStorage, window.sessionStorage]) for set/get item.
  ** false: Will take window.localStorage
  ** true: Will take window.sessionStorage
  ** If target storage not avlible, then in-memory object will be used. For example sofari do not support localStorage/sessionStorage in private browsing mode.
- */ 
+ */
 ```
 ### setItem
 ```javascript
@@ -45,14 +45,14 @@ storage.setItem(key, value);
  * Type: string
  * Required: true
  * Description: The key for set item into target storage.
- */ 
+ */
 
 /**
  * @ value
  * Type: Any valid type. Such as number, string, object, array
  * Required: true
- * Description: The value ned to set into target storage. 
- */ 
+ * Description: The value ned to set into target storage.
+ */
 ```
 
 ### getItem
@@ -64,7 +64,7 @@ storage.getItem(key, defaultValue);
  * Type: string
  * Required: true
  * Description: The key for get item from target storage.
- */ 
+ */
 
 /**
  * @ defaultValue
@@ -72,7 +72,7 @@ storage.getItem(key, defaultValue);
  * Required: false
  * Default: undefined
  * Description: The default value returned when try to get value failed.
- */ 
+ */
 ```
 ### removeItem
 ```javascript
@@ -83,7 +83,7 @@ storage.removeItem(key);
  * Type: string
  * Required: true
  * Description: The key for remove item from target storage.
- */ 
+ */
 ```
 
 ## Example
@@ -129,16 +129,16 @@ const obj = storage.getItem('obj');
 const value = storage.getItem('nun', 'I am default value');
 ```
 
-### Apply namespace
+### Apply customize namespace
 ```javascript
 import webStorage from '{{PATH}}/lib/webStorage';
-const storage = webStorage('test');
+const storage = webStorage({ namespace: 'test' });
 storage.setItem('num', 123.45);
 ```
 ### Apply sessionStorage
 ```javascript
 import webStorage from '{{PATH}}/lib/webStorage';
-const storage = webStorage('test', window.sessionStorage);
+const storage = webStorage({ sessionStorage: true });
 storage.setItem('num', 123.45);
 ```
 
