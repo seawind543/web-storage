@@ -27,6 +27,7 @@ The API is identical to the standard [Web Storage API](https://developer.mozilla
 ## API
 
 ### Constructer
+Build a new webStorage object for operator under specific namespace and storage.
 ```javascript
 import webStorage from 'webstoragejs';
 const storage = webStorage(options);
@@ -50,6 +51,7 @@ const storage = webStorage(options);
  */
 ```
 ### setItem
+Set item into storage under specific namespace.
 ```javascript
 const storage = webStorage();
 storage.setItem(key, value);
@@ -69,6 +71,7 @@ storage.setItem(key, value);
 ```
 
 ### getItem
+Get item from storage under specific namespace.
 ```javascript
 const storage = webStorage();
 storage.getItem(key, defaultValue);
@@ -88,6 +91,7 @@ storage.getItem(key, defaultValue);
  */
 ```
 ### removeItem
+Remove item from storage under specific namespace.
 ```javascript
 const storage = webStorage();
 storage.removeItem(key);
@@ -97,6 +101,26 @@ storage.removeItem(key);
  * Required: true
  * Description: The key for remove item from target storage.
  */
+```
+
+### size
+Get count of items from storage under specific namespace.
+```javascript
+const storage = webStorage();
+const otherStorage = webStorage({ namespace: 'other' });
+
+const size = storage.size();
+const otherSize = otherStorage.size();
+console.log(size) // => 0
+console.log(otherSize) // => 0
+
+storage.setItem('num', 123);
+storage.setItem('str', 'example');
+
+const newSize = storage.size();
+const newOtherSize = otherSize.size();
+console.log(newSize) // => 2
+console.log(newOtherSize) // => 0
 ```
 
 ## Example
