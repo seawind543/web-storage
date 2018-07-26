@@ -93,9 +93,41 @@ module.exports = (options = {}) => {
         }
     };
 
+    const size = () => {
+        if (!settings.namespace) {
+            throw new Error('The namespace cannot be an empty string');
+        }
+
+        const keyStart = translateKey();
+        let count = 0;
+
+        if (isAvailable()) {
+            const { storage } = settings;
+
+            for (let i = 0; i < storage.length; i++) {
+                if (storage.key(i).startsWith(keyStart)) {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        // inMemoryStorage
+        const allKeys = Object.keys(inMemoryStorage);
+        for (let i = 0; i < allKeys.length; i++) {
+            if (allKeys[i].startsWith(keyStart)) {
+                count++;
+            }
+        }
+
+        return count;
+    };
+
     return {
         getItem,
         setItem,
-        removeItem
+        removeItem,
+        size
     };
 };
