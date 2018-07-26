@@ -102,17 +102,18 @@ module.exports = (options = {}) => {
 
         if (isAvailable()) {
             const { storage } = settings;
-            const keys = [];
+            const { length } = storage;
             let itemKey;
-            for (let i = 0; i < storage.length; i++) {
-                itemKey = storage.key(i);
+            let idx = 0;
+            for (let i = 0; i < length; i++) {
+                itemKey = storage.key(idx);
+
                 if (itemKey.startsWith(keyStart)) {
-                    keys.push(itemKey);
+                    storage.removeItem(itemKey);
+                } else {
+                    idx++;
                 }
             }
-            keys.forEach((itemKey) => {
-                storage.removeItem(itemKey);
-            });
 
             return;
         }
@@ -122,6 +123,7 @@ module.exports = (options = {}) => {
         let itemKey;
         for (let i = 0; i < allKeys.length; i++) {
             itemKey = allKeys[i];
+
             if (itemKey.startsWith(keyStart)) {
                 delete inMemoryStorage[itemKey];
             }
