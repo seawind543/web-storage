@@ -1,6 +1,6 @@
 {
-  "name": "web-storage",
-  "version": "0.5.0",
+  "name": "webstoragejs",
+  "version": "0.5.1",
   "description": "A simple, JavaScript API for handling localStorage/sessionStorage with automatic JSON serialization",
   "keywords": [
     "webStorage",

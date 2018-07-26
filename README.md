@@ -1,11 +1,24 @@
 
-# webStorage
+
+# webstoragejs
 
 A simple, JavaScript API for handling localStorage/sessionStorage with automatic JSON serialization.
 
+[![NPM](https://nodei.co/npm/webstoragejs.png?downloads=true&stars=true)](https://www.npmjs.com/package/webstoragejs/)
+
 ## Installation
 
-TBD
+1. Install the latest version of [webstoragejs](https://github.com/seawind543/web-storage):
+
+```
+  npm install --save webstoragejs
+  ```
+
+2. At this point you can import `webstoragejs` and its styles in your application as follows:
+
+```javascript
+import webStorage from 'webstoragejs';
+```
 
 ## Usage
 
@@ -15,7 +28,7 @@ The API is identical to the standard [Web Storage API](https://developer.mozilla
 
 ### Constructer
 ```javascript
-import webStorage from '{{PATH}}/lib/webStorage';
+import webStorage from 'webstoragejs';
 const storage = webStorage(options);
 /**
  * @ options.namespace
@@ -90,7 +103,7 @@ storage.removeItem(key);
 
 ### Basic
 ```javascript
-import webStorage from '{{PATH}}/lib/webStorage';
+import webStorage from 'webstoragejs';
 const storage = webStorage();
 
 // Set number
@@ -114,14 +127,14 @@ console.log(obj.value) // => example
 
 ### Set value
 ```javascript
-import webStorage from '{{PATH}}/lib/webStorage';
+import webStorage from 'webstoragejs';
 const storage = webStorage();
 storage.setItem('obj', { value: 'example' });
 ```
 
 ### Get value
 ```javascript
-import webStorage from '{{PATH}}/lib/webStorage';
+import webStorage from 'webstoragejs';
 const storage = webStorage();
 const obj = storage.getItem('obj');
 
@@ -131,17 +144,17 @@ const value = storage.getItem('nun', 'I am default value');
 
 ### Apply customize namespace
 ```javascript
-import webStorage from '{{PATH}}/lib/webStorage';
+import webStorage from 'webstoragejs';
 const storage = webStorage({ namespace: 'test' });
 storage.setItem('num', 123.45);
 ```
 ### Apply sessionStorage
 ```javascript
-import webStorage from '{{PATH}}/lib/webStorage';
+import webStorage from 'webstoragejs';
 const storage = webStorage({ sessionStorage: true });
 storage.setItem('num', 123.45);
 ```
 
 ## License
 
-MIT
+[MIT](https://github.com/seawind543/web-storage/blob/master/LICENSE)
