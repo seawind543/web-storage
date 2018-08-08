@@ -7,10 +7,12 @@
     "web-storage",
     "localStorage",
     "sessionStorage",
+    "storage",
     "json",
     "serialization",
     "serialize",
-    "stringify"
+    "stringify",
+    "namespace"
   ],
   "author": "Mark Lin <marklin1106@gmail.com>",
   "license": "MIT",
