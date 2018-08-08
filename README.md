@@ -2,7 +2,7 @@
 
 # webstoragejs
 
-A simple, JavaScript API for handling localStorage/sessionStorage with automatic JSON serialization.
+A simple, JavaScript API for handling localStorage/sessionStorage with **automatic JSON serialization** and **namespace** supported.
 
 [![NPM](https://nodei.co/npm/webstoragejs.png?downloads=true&stars=true)](https://www.npmjs.com/package/webstoragejs/)
 
@@ -119,8 +119,31 @@ storage.setItem('str', 'example');
 
 const newSize = storage.size();
 const newOtherSize = otherSize.size();
-console.log(newSize) // => 2
-console.log(newOtherSize) // => 0
+console.log(newSize); // => 2
+console.log(newOtherSize); // => 0
+```
+
+### clear
+Clears all stored keys from storage under specific namespace.
+```javascript
+const storage = webStorage();
+const otherStorage = webStorage({ namespace: 'other' });
+
+storage.setItem('num', 123);
+storage.setItem('str', 'example');
+
+otherStorage.setItem('num', 123);
+otherStorage.setItem('str', 'example');
+
+console.log(storage.size()); // => 2
+console.log(otherStorage.size()); // => 2
+
+// Clears all stored keys from storage
+storage.clear();
+
+console.log(storage.size()); // => 0
+console.log(otherStorage.size()); // => 2
+
 ```
 
 ## Example
@@ -133,20 +156,20 @@ const storage = webStorage();
 // Set number
 storage.setItem('num', 123);
 const num = storage.getItem('num');
-console.log(typeof num) // => number
-console.log(num) // => 123
+console.log(typeof num); // => number
+console.log(num); // => 123
 
 // set string
 storage.setItem('str', 'example');
 const str = storage.getItem('str');
-console.log(typeof str) // => string
-console.log(num) // => example
+console.log(typeof str); // => string
+console.log(num); // => example
 
 // Set Object
 storage.setItem('obj', { value: 'example' });
 const obj = storage.getItem('obj');
-console.log(typeof obj) // => object
-console.log(obj.value) // => example
+console.log(typeof obj); // => object
+console.log(obj.value); // => example
 ```
 
 ### Set value
