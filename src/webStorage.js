@@ -93,6 +93,43 @@ module.exports = (options = {}) => {
         }
     };
 
+    const clear = () => {
+        if (!settings.namespace) {
+            throw new Error('The namespace cannot be an empty string');
+        }
+
+        const keyStart = translateKey();
+
+        if (isAvailable()) {
+            const { storage } = settings;
+            const { length } = storage;
+            let itemKey;
+            let idx = 0;
+            for (let i = 0; i < length; i++) {
+                itemKey = storage.key(idx);
+
+                if (itemKey.startsWith(keyStart)) {
+                    storage.removeItem(itemKey);
+                } else {
+                    idx++;
+                }
+            }
+
+            return;
+        }
+
+        // inMemoryStorage
+        const allKeys = Object.keys(inMemoryStorage);
+        let itemKey;
+        for (let i = 0; i < allKeys.length; i++) {
+            itemKey = allKeys[i];
+
+            if (itemKey.startsWith(keyStart)) {
+                delete inMemoryStorage[itemKey];
+            }
+        }
+    };
+
     const size = () => {
         if (!settings.namespace) {
             throw new Error('The namespace cannot be an empty string');
@@ -128,6 +165,7 @@ module.exports = (options = {}) => {
         getItem,
         setItem,
         removeItem,
+        clear,
         size
     };
 };
